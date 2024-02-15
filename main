@@ -1,3 +1,27 @@
+submit.addEventListener('click', function (e) {
+    if(Mode === "create"){
+
+        let EmployeObject = {
+            fname: fname.value,
+            lname: lname.value,
+            email: email.value,
+            phone: phone.value
+        }
+        arrayOfEmployes.push(EmployeObject)
+        localStorage.setItem('arrayOfEmployes', JSON.stringify(arrayOfEmployes))
+        console.log(arrayOfEmployes)
+        DispayInfos()
+        clearText()
+    }
+    else{
+        submit.textContent = "Update"
+        UpdateEmploye(TmpId)  // here we replace id with TmpId var because id is local variable
+        DispayInfos()
+        submit.textContent = "Create"
+        Mode = "create"
+    }
+    e.preventDefault()
+})
 
 function DispayInfos() {
     let table = ''
